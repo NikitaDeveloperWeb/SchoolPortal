@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block searchForm %}
+{% endblock %}
+ 
+{% block content %}
+
+<div class="wrapper_uses">
+    <div class="text">
+        <h1>Найти пользователя</h1>
+        <p>Введите имя пользователя:</p>
+    </div>
+    <div class="users">
+<form action="." method="get" class="form_register">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Найти" class="button_register"></p>
+</form>
+
+{% if users %}
+    {% for key in users %}
+        <div  style="display: flex;" class="user_prof">
+            {% if key.photo %}
+            <img src="/media/{{ key.photo }}">
+            {% endif %}
+            <div class="name_users">
+                <h2>{{ key.first_name_p }}</h2>
+
+                <span style="width: 2px;"></span>
+    
+                <h2>{{ key.last_name_p }}</h2>
+            </div>
+        </div>
+    {% endfor %}
+{% endif  %}
+</div>
+</div>
+{% endblock %}

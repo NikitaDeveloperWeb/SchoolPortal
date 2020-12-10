@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+
+
+<div class="login_form">
+    <div class="wrapper_login_form">
+        <h1>Вход</h1>
+        {% if form.errors %}
+        <script>
+            alert('Ваше имя пользователя и пароль не совпадали. пожалуйста, попробуйте еще раз')
+        </script>
+        {% else %}
+        {% endif %}
+        <form action="{% url 'login' %}" method="post" class="login_formis">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Войти" class="button_submit"></p>
+        </form>
+        <a href="{% url 'register' %}" class="link_registr">Зарегистрироваться</a>
+    </div>
+</div>
+{% endblock %}

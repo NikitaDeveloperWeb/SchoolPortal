@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Добро пожаловать{% endblock %}
+{% block content %}
+
+<div class="text succeful">
+    <h1>{{ new_user.first_name }},добро пожаловать!</h1>
+    <p>Ваш аккаунт успешно создан.
+    Заполните ваш профиль <a href="{% url 'edit' %}">Профиль</a>.</p>
+</div>
+
+{% endblock %} 

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+
+    <div class="chat" id="Chat_setinterval"> 
+        {% for key in posts %}
+        <div class="articless">
+            <h1 class="title_art">{{ key.title }}</h1>
+            <div class="razdelitel_art"></div>
+        <p class="articl_art">{{ key.article }}</p>
+            {% if key.photo %}
+            <img src="/media/{{key.photo }}"  class="img_art">
+             {% endif %}
+        <p class="data_art">{{ key.published|date:"d.m.Y H:i:s"}}</p>
+        </div>
+        
+            {% endfor %}
+            <div class="paginator">
+                {% if page.has_previous %}
+                    <a href="?page={{ page.previous_page_number }}" class="paginator pag_a">Previous</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                {% endif %}
+            
+                <span class="paginator">Page {{ page.number }} of  {{ page.paginator.num_pages }}</span>
+            
+                {% if page.has_next %}  
+                <a href="?page={{ page.next_page_number }}" class="paginator pag_a">Next</a>  
+                {% endif %} 
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

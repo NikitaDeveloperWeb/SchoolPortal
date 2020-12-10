@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Редактировать профиль{% endblock %}
+{% block content %}
+
+<div class="register_form_wrapper">
+    <div class="text">
+        <h1>Редактируйте свой профиль</h1>
+        <p>Вы можете изменить свою учетную запись, используя следующую форму:</p>
+    </div>
+
+    <form action="." method="post" enctype="multipart/form-data" class="form_register">
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Сохранить" class="button_register"></p>
+    </form>
+</div>
+{% endblock %}
